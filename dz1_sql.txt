@@ -1,0 +1,45 @@
+
+/*
+CREATE DATABASE myphone;
+
+USE myphone;
+
+CREATE TABLE mobi_me
+(
+id INT PRIMARY KEY NOT NULL,
+product_name VARCHAR(30) NOT NULL,
+manufacturer VARCHAR(30) NOT NULL,
+product_count INT,
+price INT NOT NULL
+);
+
+INSERT mobi_me
+(
+id, product_name, manufacturer, product_count, price
+)
+
+VALUES 
+(1, 'IPhone X', 'Apple', 3, 76000),
+(2, 'IPhone 8', 'Apple', 2, 51000),
+(3, 'Galaxy S9', 'Samsung', 2, 56000),
+(4, 'Galaxy S8', 'Samsung', 1, 41000),
+(5, 'P20 Pro', 'Huawei', 5, 36000);
+
+
+SELECT * FROM mobi_me
+WHERE product_count > 2
+
+
+SELECT product_name, manufacturer, price FROM mobi_me
+WHERE manufacturer = 'samsung'
+
+SELECT * FROM mobi_me
+WHERE product_name Like'IPhone%'
+
+SELECT * FROM mobi_me
+WHERE product_name Like'Sumsung%'
+
+*/
+
+SELECT * FROM mobi_me
+WHERE product_name Like'%8%'
