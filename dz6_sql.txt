@@ -1,0 +1,47 @@
+USE lesson_6;
+/*
+1. Создайте функцию, которая принимает кол-во сек и формат их в кол-во дней часов.
+Пример: 123456 ->'1 days 10 hours 17 minutes 36 seconds '
+*/
+
+delimiter //
+CREATE FUNCTION dista(a INT)
+RETURNS VARCHAR(45)
+DETERMINISTIC
+BEGIN
+DECLARE res_day INT DEFAULT 0;
+DECLARE res_h INT DEFAULT 0;
+DECLARE res_min INT DEFAULT 0;
+DECLARE res_sec INT DEFAULT 0;
+SET res_day = a DIV (24*3600);
+SET res_h = a MOD (24*3600) DIV 3600;
+SET res_min = a MOD (24*3600) MOD 3600 DIV 60;
+SET res_sec = a MOD (24*3600) MOD 3600 MOD 60;
+RETURN CONCAT(res_day,' days ', res_h,' hours ', res_min,' minutes ', res_sec,' seconds ');
+END;
+// delimiter 
+SELECT dista(123456);
+
+/*
+2. Выведите только четные числа от 1 до 10.
+Пример: 2,4,6,8,10
+*/
+
+DROP PROCEDURE IF EXISTS my_now;
+DELIMITER //
+
+CREATE PROCEDURE my_now ()
+BEGIN
+  DECLARE i INT DEFAULT 0;
+  DECLARE resualt VARCHAR(45) DEFAULT '';
+  WHILE i <= 10 DO
+  IF i != 0 THEN
+   SET resualt = CONCAT(resualt, ' ', i);
+   END IF;
+	SET i = i + 2;
+ END WHILE;
+ SELECT resualt;
+END; //
+DELIMITER 
+
+CALL my_now();
